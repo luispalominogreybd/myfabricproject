@@ -1,5 +1,4 @@
 # Fabric notebook source
-# Test connection with GitHub
 
 # METADATA ********************
 
