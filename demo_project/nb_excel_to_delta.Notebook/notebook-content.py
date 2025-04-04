@@ -8,6 +8,10 @@
 # META   }
 # META }
 
+# MARKDOWN ********************
+
+# # To Excel file at delta file
+
 # CELL ********************
 
 from pyspark.sql import SparkSession
@@ -21,11 +25,25 @@ spark = SparkSession.builder \
     .config("spark.sql.catalog.spark_catalog", "org.apache.spark.sql.delta.catalog.DeltaCatalog") \
     .getOrCreate()
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 from azure.storage.blob import BlobServiceClient
 import pandas as pd
 import io
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -34,12 +52,26 @@ connection_string = 'DefaultEndpointsProtocol=https;AccountName=datalakeexceldel
 container_name = 'filesystemexceldelta'
 blob_name = 'raw/dataejemplo.xlsx'
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Conéctate al servicio de blobs
 blob_service_client = BlobServiceClient.from_connection_string(connection_string)
 container_client = blob_service_client.get_container_client(container_name)
 blob_client = container_client.get_blob_client(blob_name)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -48,16 +80,37 @@ stream = io.BytesIO()
 blob_client.download_blob().readinto(stream)
 stream.seek(0)
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Lee el archivo Excel en un DataFrame de Pandas
 df = pd.read_excel(stream)
 # print(df.head())
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Convertir el DataFrame de Pandas a un DataFrame de Spark
 sdf = spark.createDataFrame(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -65,10 +118,24 @@ sdf = spark.createDataFrame(df)
 delta_table_path = "abfss://filesystemexceldelta@datalakeexceldelta.dfs.core.windows.net/modeled/dataejemplo.delta"
 
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # CELL ********************
 
 # Si no tienes una tabla Delta existente, puedes crearla usando el siguiente código:
 sdf.write.format("delta").mode("overwrite").save(delta_table_path)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -76,6 +143,13 @@ sdf.write.format("delta").mode("overwrite").save(delta_table_path)
 delta_df = spark.read.format("delta").load(delta_table_path)
 
 delta_df.show()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
@@ -86,3 +160,10 @@ delta_table.alias("existing").merge(
 ).whenMatchedUpdateAll(
 ).whenNotMatchedInsertAll(
 ).execute()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
