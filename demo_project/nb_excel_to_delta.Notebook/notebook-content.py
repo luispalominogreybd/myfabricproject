@@ -17,6 +17,8 @@
 from pyspark.sql import SparkSession
 from delta.tables import DeltaTable
 
+# test text
+
 # Crear una sesión de Spark
 spark = SparkSession.builder \
     .appName("DeltaLakeExample") \
