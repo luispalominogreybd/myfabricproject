@@ -1,0 +1,79 @@
+{
+  "schema_version": "60",
+  "tiles": [
+    {
+      "id": "76f76738-5fd2-4ad9-9065-bb120f281719",
+      "queryRef": {
+        "kind": "query",
+        "queryId": "d8fe49b5-a39e-4f1a-b2a3-5a0f6e911e1e"
+      },
+      "title": "streaming_data Table Preview",
+      "visualType": "table",
+      "pageId": "e6b1c519-470b-452e-b90d-a1fec5d75029",
+      "layout": {
+        "x": 0,
+        "y": 0,
+        "width": 23,
+        "height": 17
+      },
+      "visualOptions": {
+        "table__enableRenderLinks": true,
+        "colorRulesDisabled": true,
+        "colorStyle": "light",
+        "crossFilter": [],
+        "crossFilterDisabled": false,
+        "drillthroughDisabled": false,
+        "drillthrough": [],
+        "table__renderLinks": [],
+        "colorRules": []
+      }
+    }
+  ],
+  "baseQueries": [],
+  "parameters": [
+    {
+      "kind": "duration",
+      "id": "364413e7-44d0-45d3-a2c7-647447579882",
+      "displayName": "Time range",
+      "description": "",
+      "beginVariableName": "_startTime",
+      "endVariableName": "_endTime",
+      "defaultValue": {
+        "kind": "dynamic",
+        "count": 1,
+        "unit": "hours"
+      },
+      "showOnPages": {
+        "kind": "all"
+      }
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "de41f953-0c07-49ef-8f60-f181e862c1b9",
+      "kind": "kusto-trident",
+      "clusterUri": "",
+      "database": "b0e39ad2-a4ec-b613-473f-86705a3ee252",
+      "name": "KQL_EventHouse",
+      "scopeId": "kusto-trident",
+      "workspace": "00000000-0000-0000-0000-000000000000"
+    }
+  ],
+  "pages": [
+    {
+      "name": "Page 1",
+      "id": "e6b1c519-470b-452e-b90d-a1fec5d75029"
+    }
+  ],
+  "queries": [
+    {
+      "dataSource": {
+        "kind": "inline",
+        "dataSourceId": "de41f953-0c07-49ef-8f60-f181e862c1b9"
+      },
+      "text": "['streaming_data'] ",
+      "id": "d8fe49b5-a39e-4f1a-b2a3-5a0f6e911e1e",
+      "usedVariables": []
+    }
+  ]
+}

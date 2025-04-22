@@ -1,0 +1,200 @@
+{
+  "sources": [
+    {
+      "id": "17564d95-4742-4096-8659-cbe26b9176cf",
+      "name": "AzureEventHub",
+      "type": "AzureEventHub",
+      "properties": {
+        "dataConnectionId": "3cb3be83-1e15-48c7-b2aa-fbddd37d1cc1",
+        "consumerGroupName": "$Default",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      }
+    }
+  ],
+  "destinations": [
+    {
+      "id": "1eb1ffc9-76a4-4f44-b56c-48641126e701",
+      "name": "LHStreamData",
+      "type": "Eventhouse",
+      "properties": {
+        "dataIngestionMode": "ProcessedIngestion",
+        "workspaceId": "00000000-0000-0000-0000-000000000000",
+        "itemId": "b0e39ad2-a4ec-b613-473f-86705a3ee252",
+        "databaseName": "KQL_EventHouse",
+        "tableName": "streaming_data",
+        "inputSerialization": {
+          "type": "Json",
+          "properties": {
+            "encoding": "UTF8"
+          }
+        }
+      },
+      "inputNodes": [
+        {
+          "name": "KQL_EventStream-stream"
+        }
+      ],
+      "inputSchemas": [
+        {
+          "name": "KQL_EventStream-stream",
+          "schema": {
+            "columns": [
+              {
+                "name": "venta_id",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "fecha_venta",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "region",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "ciudad",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "tienda",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "categoria",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "marca",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "producto",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precio_unitario",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "precio_ultima_compra",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "cantidad",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "descuento_pct",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "descuento_monto",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "subtotal",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "impuesto_pct",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "impuesto_monto",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "total_linea",
+                "type": "Float",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "canal_venta",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "terminal_origen",
+                "type": "Nvarchar(max)",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventProcessedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "PartitionId",
+                "type": "BigInt",
+                "fields": null,
+                "items": null
+              },
+              {
+                "name": "EventEnqueuedUtcTime",
+                "type": "DateTime",
+                "fields": null,
+                "items": null
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "streams": [
+    {
+      "id": "584a187a-037c-4481-a4b7-b49553cb02df",
+      "name": "KQL_EventStream-stream",
+      "type": "DefaultStream",
+      "properties": {},
+      "inputNodes": [
+        {
+          "name": "AzureEventHub"
+        }
+      ]
+    }
+  ],
+  "operators": [],
+  "compatibilityLevel": "1.0"
+}
