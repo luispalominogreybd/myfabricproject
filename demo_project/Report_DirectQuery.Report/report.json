@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.63\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"pageRefresh\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"duration\":{\"expr\":{\"Literal\":{\"Value\":\"'PT5S'\"}}}}}]}}",
+      "displayName": "Página 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "4aa7ec4c73faba5a9211",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"5b7703088b507a369271\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.183875530410184,\"y\":0,\"z\":0,\"width\":1213.917963224894,\"height\":675.1909476661953,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"streaming_data.ciudad\"},{\"queryRef\":\"streaming_data.categoria\"},{\"queryRef\":\"streaming_data.venta_id\"},{\"queryRef\":\"Sum(streaming_data.cantidad)\"},{\"queryRef\":\"Sum(streaming_data.total_linea)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"s\",\"Entity\":\"streaming_data\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"ciudad\"},\"Name\":\"streaming_data.ciudad\",\"NativeReferenceName\":\"ciudad\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"categoria\"},\"Name\":\"streaming_data.categoria\",\"NativeReferenceName\":\"categoria\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"cantidad\"}},\"Function\":0},\"Name\":\"Sum(streaming_data.cantidad)\",\"NativeReferenceName\":\"Suma de cantidad\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"total_linea\"}},\"Function\":0},\"Name\":\"Sum(streaming_data.total_linea)\",\"NativeReferenceName\":\"Suma de total_linea\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"venta_id\"}},\"Function\":2},\"Name\":\"streaming_data.venta_id\",\"NativeReferenceName\":\"Recuento de venta_id\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 675.19,
+          "width": 1213.92,
+          "x": 10.18,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}
