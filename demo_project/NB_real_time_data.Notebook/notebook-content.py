@@ -63,8 +63,14 @@ producer = EventHubProducerClient.from_connection_string(
 faker = Faker()
 
 # Catálogos
-regiones = ['Norte', 'Sur', 'Este', 'Oeste', 'Centro']
-ciudades = ['Lima', 'Arequipa', 'Trujillo', 'Cusco', 'Chiclayo']
+region_ciudades = {
+    'Norte': ['Trujillo', 'Chiclayo'],
+    'Centro': ['Junin', 'Apurimac'],
+    'Sur': ['Cusco', 'Arequipa'],
+    'Este': ['Puno', 'Ucayali'],
+    'Oeste': ['Lima', 'Ica']
+}
+regiones = list(region_ciudades.keys())
 tiendas = ['FashionPlus', 'RopaMax', 'UrbanStyle', 'ModaCenter', 'TrendZone']
 categorias = ['Camisas', 'Pantalones', 'Vestidos', 'Zapatos', 'Accesorios']
 marcas = ['Nike', 'Adidas', 'Zara', 'H&M', 'Levi’s', 'Under Armour', 'Puma', 'Guess']
@@ -105,7 +111,7 @@ while True:
 
     for _ in range(n_registros):
         region = random.choice(regiones)
-        ciudad = random.choice(ciudades)
+        ciudad = random.choice(region_ciudades[region])
         tienda = random.choice(tiendas)
         categoria = random.choice(categorias)
         marca = random.choice(marcas)
