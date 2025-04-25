@@ -13,7 +13,6 @@
 
 %pip install faker
 
-
 # METADATA ********************
 
 # META {
@@ -24,6 +23,17 @@
 # CELL ********************
 
 %pip install azure.eventhub
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+%pip install azure-identity azure-keyvault-secrets azure-eventhub
 
 # METADATA ********************
 
@@ -54,11 +64,63 @@ from zoneinfo import ZoneInfo
 
 # CELL ********************
 
-# Conexión Event Hub
-producer = EventHubProducerClient.from_connection_string(
-    conn_str="Endpoint=sb://retailnovanamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SoLmBCL5oRRqT3I4h0gNiXgKO25XBSop6+AEhNs1wes=",
-    eventhub_name="eventhub_first_file"
+from notebookutils import mssparkutils  # Librería de utilidades de Notebook
+from trident_token_library_wrapper import PyTridentTokenLibrary  # Token library para Key Vault
+
+# URL de tu Key Vault (usa tu vault 'fabricconn')
+vault_url = "https://fabricconn.vault.azure.net/"
+
+# 1. Obtener token de acceso para Key Vault
+access_token = mssparkutils.credentials.getToken("keyvault")
+
+# 2. Recuperar secret 'fabricendpoint'
+fabricendpoint = PyTridentTokenLibrary.get_secret_with_token(
+    vault_url,
+    "fabricendpoint",    # nombre de tu secreto fabricendpoint
+    access_token
 )
+
+# 3. Recuperar secret 'fabriceventhub'
+fabriceventhub = PyTridentTokenLibrary.get_secret_with_token(
+    vault_url,
+    "fabriceventhub",   # nombre de tu secreto fabriceventhub
+    access_token
+)
+
+# 4. Verificación rápida (Fabric mostrará [REDACTED] en la salida)
+print(f"fabricendpoint: {fabricendpoint[:154]}…")
+print(f"fabriceventhub: {fabriceventhub[:18]}…")
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# 3. Crea el cliente y envía un evento de prueba
+producer = EventHubProducerClient.from_connection_string(
+    conn_str=fabricendpoint,
+    eventhub_name=fabriceventhub
+)
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Conexión Event Hub
+# producer = EventHubProducerClient.from_connection_string(
+#    conn_str="Endpoint=sb://retailnovanamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SoLmBCL5oRRqT3I4h0gNiXgKO25XBSop6+AEhNs1wes=",eventhub_name="eventhub_first_file"
+# )
 
 faker = Faker()
 
