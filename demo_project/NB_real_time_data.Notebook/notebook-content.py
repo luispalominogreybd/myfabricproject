@@ -6,12 +6,14 @@
 # META   "kernel_info": {
 # META     "name": "synapse_pyspark"
 # META   },
-# META   "dependencies": {}
+# META   "dependencies": {
+# META     "environment": {}
+# META   }
 # META }
 
 # CELL ********************
 
-%pip install faker
+%pip install -q --upgrade pip
 
 # METADATA ********************
 
@@ -22,18 +24,7 @@
 
 # CELL ********************
 
-%pip install azure.eventhub
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-%pip install azure-identity azure-keyvault-secrets azure-eventhub
+%pip install -q faker azure.eventhub azure-identity azure-keyvault-secrets azure-eventhub
 
 # METADATA ********************
 
@@ -87,10 +78,6 @@ fabriceventhub = PyTridentTokenLibrary.get_secret_with_token(
     access_token
 )
 
-# 4. Verificación rápida (Fabric mostrará [REDACTED] en la salida)
-print(f"fabricendpoint: {fabricendpoint[:154]}…")
-print(f"fabriceventhub: {fabriceventhub[:18]}…")
-
 
 # METADATA ********************
 
@@ -101,7 +88,6 @@ print(f"fabriceventhub: {fabriceventhub[:18]}…")
 
 # CELL ********************
 
-# 3. Crea el cliente y envía un evento de prueba
 producer = EventHubProducerClient.from_connection_string(
     conn_str=fabricendpoint,
     eventhub_name=fabriceventhub
@@ -116,11 +102,6 @@ producer = EventHubProducerClient.from_connection_string(
 # META }
 
 # CELL ********************
-
-# Conexión Event Hub
-# producer = EventHubProducerClient.from_connection_string(
-#    conn_str="Endpoint=sb://retailnovanamespace.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=SoLmBCL5oRRqT3I4h0gNiXgKO25XBSop6+AEhNs1wes=",eventhub_name="eventhub_first_file"
-# )
 
 faker = Faker()
 
