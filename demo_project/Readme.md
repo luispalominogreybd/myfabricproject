@@ -18,13 +18,39 @@ demo_project/
 ├── Report_DirectQuery.SemanticModel        # Modelo semántico del reporte
 ```
 
-## 🚀 Entorno Azure
-Deben crearse los siguientes servicios: 
-```
-Resource group/
-├── Event_Hubs.Namespace                               # Servicio Event Hubs
-├── ├── Event_Hubs.Instance (eventhub_first_file)      # Servicio de escucha
-```
+## 🔧 Configuración de Recursos en Azure
+
+Este proyecto requiere ciertos recursos configurados en Azure para funcionar correctamente. A continuación se detallan los recursos clave y cómo están organizados:
+
+### 🔑 Key Vault: `fabricconn`
+
+Contiene secretos necesarios para conectarse a los servicios de Azure:
+
+| Nombre del secreto     | Descripción                                 |
+|------------------------|---------------------------------------------|
+| `fabricendpoint`       | Endpoint de conexión a Microsoft Fabric     |
+| `fabriceventhub`       | Nombre del Event Hub utilizado              |
+
+Asegúrese de que la aplicación tenga permisos de acceso (IAM) adecuados para obtener estos secretos desde Key Vault. Desde 'Add role assigment'
+
+| Role                     | Description                                                              | Scope           | Group assignment |
+|--------------------------|--------------------------------------------------------------------------|-----------------|------------------|
+| Key Vault Administrator  | Perform all data plane operations on a key vault and all objects in it,  | This resource   |                  | 
+|                          | including certificates, keys, and secrets. Cannot manage key vault       |                 |                  |
+|                          | resources or manage role assignments. Only works for key vaults that     |                 |                  |
+|                          | use the 'Azure role-based access control' permission model.              |                 |                  |
+| Key Vault Secret User    | Read secret contents. Only works for key vaults that use the             | This resource   |                  |
+|                          | 'Azure role-based access control' permission model.                      |                 |                  |
+
+### 📡 Event Hubs: `retailnovanamespace`
+
+Namespace donde se alojan los eventos en tiempo real.
+
+- **Event Hub:** `eventhub_first_file`
+- **Estado:** Activo
+- **Retention (retención de mensajes):** 1 hora
+
+Este Event Hub es utilizado para la ingesta de datos en tiempo real y debe estar enlazado adecuadamente con los componentes del proyecto como notebooks o pipelines de Fabric.
 
 ## 🚀 Simulación de datos
 Se utiliza un Notebook en Python para generar datos de ventas con lógica de variación controlada (onda sinusoidal) para simular picos y caídas.
@@ -70,10 +96,11 @@ El reporte Power BI (`Report_DirectQuery`) permite analizar las ventas en tiempo
 - Rangos de precios y cantidades
 
 ## 📂 Archivos clave
-| Archivo | Descripción |
-|--------|-------------|
+
+| Archivo                      | Descripción                                   |
+|------------------------------|-----------------------------------------------|
 | `NB_real_time_data.Notebook` | Generador de eventos con variación controlada |
-| `Report_DirectQuery` | Reporte Power BI con conexión DirectQuery |
+| `Report_DirectQuery`         | Reporte Power BI con conexión DirectQuery     |
 
 ## 👨‍💻 Autor
 **Luis Palomino Vallvé**  
