@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "RN_Dashboard_RealTime"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "761f4870-ec7f-bd11-457a-041cbc47ea94"
+  }
+}
