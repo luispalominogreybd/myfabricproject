@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Environment",
-    "displayName": "testDemoEnvironment",
-    "description": "Environment"
+    "type": "Eventhouse",
+    "displayName": "KQL_EventHouse",
+    "description": "KQL_EventHouse"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "5bdd48dc-2688-a920-43d8-9876043a761b"
+    "logicalId": "de99c995-25a0-a5fa-499c-4ec8bb1502fa"
   }
 }

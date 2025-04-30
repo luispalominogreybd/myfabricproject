@@ -1,12 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "nb_excel_to_delta",
-    "description": "New notebook"
+    "type": "Lakehouse",
+    "displayName": "LH_RetailNovaDemo"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "5d2f8104-70bd-8964-46f5-5e103454b521"
+    "logicalId": "7962118e-e7c1-8196-4be8-e47e3509910a"
   }
 }

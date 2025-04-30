@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "KQLQueryset",
+    "displayName": "KQL_RetailNova",
+    "description": "KQL_RetailNova"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "98b78bd7-5eca-a2d4-4bcc-2112e5200c77"
+  }
+}

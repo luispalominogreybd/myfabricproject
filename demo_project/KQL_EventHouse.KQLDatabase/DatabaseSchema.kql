@@ -1,0 +1,5 @@
+// KQL script
+// Use management commands in this script to configure your database items, such as tables, functions, materialized views, and more.
+
+
+.create-merge table streaming_data (venta_id:string, fecha_venta:string, region:string, ciudad:string, tienda:string, categoria:string, marca:string, producto:string, precio_unitario:dynamic, precio_ultima_compra:dynamic, cantidad:long, descuento_pct:long, descuento_monto:long, subtotal:dynamic, impuesto_pct:long, impuesto_monto:dynamic, total_linea:dynamic, canal_venta:string, terminal_origen:string, EventProcessedUtcTime:datetime, PartitionId:long, EventEnqueuedUtcTime:datetime) 

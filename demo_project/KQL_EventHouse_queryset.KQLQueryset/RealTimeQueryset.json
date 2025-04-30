@@ -1,0 +1,22 @@
+{
+  "queryset": {
+    "version": "1.0.0",
+    "dataSources": [
+      {
+        "id": "6f93762b-adb9-45fa-8acf-634cba874364",
+        "clusterUri": "",
+        "type": "Fabric",
+        "databaseItemId": "b0e39ad2-a4ec-b613-473f-86705a3ee252",
+        "databaseItemName": "KQL_EventHouse"
+      }
+    ],
+    "tabs": [
+      {
+        "id": "797ba40b-b834-42de-87e7-4380543f123f",
+        "content": "//***********************************************************************************************************\n// Here are two articles to help you get started with KQL:\n// KQL reference guide - https://aka.ms/KQLguide\n// SQL - KQL conversions - https://aka.ms/sqlcheatsheet\n//***********************************************************************************************************\n\n.clear table streaming_data data\n",
+        "title": "Tab",
+        "dataSourceId": "6f93762b-adb9-45fa-8acf-634cba874364"
+      }
+    ]
+  }
+}
