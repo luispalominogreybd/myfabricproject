@@ -18,6 +18,14 @@ demo_project/
 ├── Report_DirectQuery.SemanticModel        # Modelo semántico del reporte
 ```
 
+## 🚀 Entorno Azure
+Deben crearse los siguientes servicios: 
+```
+Resource group/
+├── Event_Hubs.Namespace                               # Servicio Event Hubs
+├── ├── Event_Hubs.Instance (eventhub_first_file)      # Servicio de escucha
+```
+
 ## 🚀 Simulación de datos
 Se utiliza un Notebook en Python para generar datos de ventas con lógica de variación controlada (onda sinusoidal) para simular picos y caídas.
 
