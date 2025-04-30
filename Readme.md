@@ -26,21 +26,21 @@ Este proyecto requiere ciertos recursos configurados en Azure para funcionar cor
 
 Contiene secretos necesarios para conectarse a los servicios de Azure:
 
-| Nombre del secreto     | Descripción                                 |
-|------------------------|---------------------------------------------|
-| `fabricendpoint`       | Endpoint de conexión a Microsoft Fabric     |
-| `fabriceventhub`       | Nombre del Event Hub utilizado              |
+| Nombre del secreto     | Descripción                                 | Servicio         | Opciones                                                                                                      |
+|------------------------|---------------------------------------------|------------------|---------------------------------------------------------------------------------------------------------------|
+| `fabricendpoint`       | Endpoint de conexión a Microsoft Fabric     | Event Hubs       | Setting / Shared access policies / RootManageSharedAccessKey / Primary connection string (copiar esta cadena) |
+| `fabriceventhub`       | Nombre del Event Hub utilizado              | Event Hubs       | Entities / Event Hubs / "+ Event Hub" colocar el nombre "eventhub_first_file" y dejar todo en default.        |
 
 Asegúrese de que la aplicación tenga permisos de acceso (IAM) adecuados para obtener estos secretos desde Key Vault. Desde 'Add role assigment'
 
-| Role                     | Description                                                              | Scope           | Group assignment |
-|--------------------------|--------------------------------------------------------------------------|-----------------|------------------|
-| Key Vault Administrator  | Perform all data plane operations on a key vault and all objects in it,  | This resource   |                  | 
-|                          | including certificates, keys, and secrets. Cannot manage key vault       |                 |                  |
-|                          | resources or manage role assignments. Only works for key vaults that     |                 |                  |
-|                          | use the 'Azure role-based access control' permission model.              |                 |                  |
-| Key Vault Secret User    | Read secret contents. Only works for key vaults that use the             | This resource   |                  |
-|                          | 'Azure role-based access control' permission model.                      |                 |                  |
+| Role                     | Description                                                              | Scope                                                                                                       |
+|--------------------------|--------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| Key Vault Administrator  | Perform all data plane operations on a key vault and all objects in it,  | Seleccione el rol / en Members en "Assign access to" elija "User" y en "+ Select members" ubique su usuario |
+|                          | including certificates, keys, and secrets. Cannot manage key vault       |                                                                                                             |
+|                          | resources or manage role assignments. Only works for key vaults that     |                                                                                                             |
+|                          | use the 'Azure role-based access control' permission model.              |                                                                                                             |
+| Key Vault Secret User    | Read secret contents. Only works for key vaults that use the             | Seleccione el rol / en Members en "Assign access to" elija "User" y en "+ Select members" ubique su usuario |
+|                          | 'Azure role-based access control' permission model.                      |                                                                                                             |
 
 ### 📡 Event Hubs: `retailnovanamespace`
 
